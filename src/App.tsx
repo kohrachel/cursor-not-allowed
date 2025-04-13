@@ -16,8 +16,34 @@ const LandingPage = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleKeyDown = () => {
-      setStartGame(true);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const excludedKeys = [
+        "Meta",
+        "Control",
+        "Shift",
+        "Alt",
+        "CapsLock",
+        "Tab",
+        "Escape",
+        "Backspace",
+        "Delete",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Enter",
+        "Space",
+        "Tab",
+        "Backspace",
+        "Delete",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+      ];
+      if (!excludedKeys.includes(e.key)) {
+        setStartGame(true);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
